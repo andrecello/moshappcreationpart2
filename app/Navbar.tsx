@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation'
 const Navbar = () => {
     const currentPath = usePathname();
     console.log(currentPath);
-    
+
     const links = [
         { label: 'Dashboard', href: '/'},
         { label: 'Issues', href: '/issues'},
@@ -23,7 +23,7 @@ const Navbar = () => {
             {links.map(link => 
                 <Link 
                     key={link.href}
-                        className = 'text-sky-500 hover:text-sky-950 transition-colors' 
+                        className = {`${link.href === currentPath ? 'text-fuchsia-500' : 'text-sky-500'} hover:text-sky-950 transition-colors`}
                         href={link.href}>{link.label}</Link>)}
         </ul>
     </nav>
