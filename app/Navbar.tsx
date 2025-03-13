@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 import { BiSolidGame } from "react-icons/bi";
 import { usePathname } from 'next/navigation'
+import classnames from 'classnames'
 
 const Navbar = () => {
     const currentPath = usePathname();
@@ -23,7 +24,11 @@ const Navbar = () => {
             {links.map(link => 
                 <Link 
                     key={link.href}
-                        className = {`${link.href === currentPath ? 'text-fuchsia-500' : 'text-sky-500'} hover:text-sky-950 transition-colors`}
+                        className = {classnames({
+                            'text-fuchsia-500': link.href === currentPath,
+                            'text-sky-400': link.href !== currentPath,
+                            'hover:text-amber-800': true
+                        })}
                         href={link.href}>{link.label}</Link>)}
         </ul>
     </nav>
